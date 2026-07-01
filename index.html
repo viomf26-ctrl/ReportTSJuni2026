@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laporan Bulanan Juni 2026 — Shee MF</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#14171B; --panel:#1C2025; --panel2:#242A31; --line:#333A42;
+    --amber:#FF8A3D; --amberDim:#8A5024; --teal:#3FBFAA; --red:#E5645A; --gold:#E3B23C;
+    --text:#EDEAE0; --muted:#8B939E;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;}
+  .disp{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.02em;}
+  .mono{font-family:'JetBrains Mono',ui-monospace,monospace;}
+  .wrap{max-width:980px;margin:0 auto;padding:0 0 50px;}
+  .hero{padding:34px 24px 22px;position:relative;overflow:hidden;}
+  .hero-ring{position:absolute;top:-30px;right:-30px;width:220px;height:220px;border:3px solid var(--amberDim);border-radius:50%;opacity:.25;}
+  .eyebrow{font-size:12px;color:var(--amber);letter-spacing:.15em;font-weight:700;}
+  .title{font-size:38px;font-weight:700;line-height:1.05;margin-top:4px;}
+  .sub{font-size:13px;color:var(--muted);margin-top:6px;}
+  .period{border:1px solid var(--line);border-radius:10px;padding:10px 16px;background:var(--panel);display:flex;flex-direction:column;align-items:flex-end;gap:2px;float:right;margin-top:-70px;}
+  .stamp{height:2px;background:repeating-linear-gradient(90deg,var(--amber) 0 14px,transparent 14px 22px);opacity:.6;}
+  .content{padding:24px 24px 0;display:flex;flex-direction:column;gap:30px;}
+  .badges{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:640px){.badges{grid-template-columns:1fr;} .period{float:none;margin-top:12px;}}
+  .badge{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;position:relative;overflow:hidden;}
+  .badge .stripe{position:absolute;top:0;left:0;width:4px;height:100%;}
+  .badge-head{display:flex;align-items:center;gap:12px;}
+  .badge-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px;}
+  .badge-eyebrow{font-size:11px;color:var(--muted);letter-spacing:.08em;}
+  .badge-name{font-size:18px;font-weight:800;line-height:1.2;}
+  .badge-detail{font-size:12.5px;margin-top:10px;font-weight:700;}
+  .badge-note{font-size:11.5px;color:var(--muted);margin-top:6px;line-height:1.4;}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;}
+  .kpi{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:13px 15px;border-top:3px solid var(--teal);}
+  .kpi-label{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;}
+  .kpi-val{font-size:22px;font-weight:700;}
+  .kpi-val.small{font-size:16px;}
+  h2.sect{font-size:19px;font-weight:700;margin:0 0 4px;display:flex;align-items:center;gap:8px;}
+  .sect-sub{font-size:12.5px;color:var(--muted);margin-bottom:14px;}
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  th{background:var(--panel2);text-align:right;padding:9px 14px;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid var(--line);}
+  th:first-child{text-align:left;}
+  td{padding:8px 14px;border-bottom:1px solid var(--line);}
+  td.num{text-align:right;}
+  tr:hover td{background:var(--panel2);}
+  .tblwrap{border:1px solid var(--line);border-radius:10px;overflow:hidden;overflow-x:auto;}
+  .bars{display:flex;flex-direction:column;gap:10px;margin-bottom:16px;}
+  .bar-row{font-size:12px;}
+  .bar-name{color:var(--muted);margin-bottom:3px;}
+  .bar-track{display:flex;gap:4px;align-items:center;}
+  .bar-fill{height:16px;border-radius:3px;}
+  .bar-val{font-family:'JetBrains Mono',monospace;font-size:11px;width:36px;flex-shrink:0;}
+  .grid2{display:grid;grid-template-columns:1.2fr 1fr;gap:16px;}
+  @media(max-width:640px){.grid2{grid-template-columns:1fr;}}
+  .chart-title{font-size:12px;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.05em;font-family:'Oswald',sans-serif;}
+  .donut-legend{display:flex;flex-direction:column;gap:6px;margin-top:12px;font-size:11.5px;}
+  .legend-item{display:flex;align-items:center;gap:8px;}
+  .legend-dot{width:9px;height:9px;border-radius:2px;flex-shrink:0;}
+  .minis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:16px;}
+  .mini{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:11px 13px;}
+  .mini-label{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:10.5px;margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em;font-family:'Oswald',sans-serif;}
+  .mini-val{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;}
+  .footer{text-align:center;font-size:11px;color:var(--muted);margin-top:8px;font-family:'JetBrains Mono',monospace;}
+  .crown{color:var(--gold);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="hero-ring"></div>
+    <div class="eyebrow">Shee MF · Laporan Operasional Bulanan</div>
+    <div class="title">Juni 2026</div>
+    <div class="sub">Rekap Produktivitas, LDP (Lost), Found, &amp; Back To Inventory · Warehouse Dry Storage</div>
+    <div class="period">
+      <span style="font-size:10px;color:var(--muted);letter-spacing:.1em;font-family:'Oswald',sans-serif;">PERIODE</span>
+      <span class="mono" style="font-size:13px;font-weight:700;">01 – 30 Jun 2026</span>
+    </div>
+  </div>
+  <div class="stamp"></div>
+
+  <div class="content">
+
+    <!-- BADGES -->
+    <div class="badges">
+      <div class="badge">
+        <div class="stripe" style="background:var(--red);"></div>
+        <div class="badge-head">
+          <div class="badge-icon" style="background:var(--gold);">👑</div>
+          <div>
+            <div class="badge-eyebrow disp">King PTL Bulan Ini</div>
+            <div class="badge-name">Dede Andi Yuda</div>
+          </div>
+        </div>
+        <div class="badge-detail mono" style="color:var(--red);">41 kasus Pick To Loss · rata-rata 2,93%</div>
+        <div class="badge-note">Troubleshooter dengan jumlah PTL (kesalahan pick) terbanyak — perlu perhatian &amp; coaching.</div>
+      </div>
+      <div class="badge">
+        <div class="stripe" style="background:var(--teal);"></div>
+        <div class="badge-head">
+          <div class="badge-icon" style="background:var(--teal);">📈</div>
+          <div>
+            <div class="badge-eyebrow disp">Top Performer</div>
+            <div class="badge-name">Muhammad Ray Farhan</div>
+          </div>
+        </div>
+        <div class="badge-detail mono" style="color:var(--teal);">334 task done · rata-rata 13,36%</div>
+        <div class="badge-note">Troubleshooter dengan jumlah task selesai terbanyak bulan ini.</div>
+      </div>
+    </div>
+
+    <!-- KPIs -->
+    <div class="kpis">
+      <div class="kpi" style="border-top-color:var(--teal);">
+        <div class="kpi-label disp">Total Task Done</div><div class="kpi-val mono">4.280</div>
+      </div>
+      <div class="kpi" style="border-top-color:var(--red);">
+        <div class="kpi-label disp">Total PTL</div><div class="kpi-val mono">319</div>
+      </div>
+      <div class="kpi" style="border-top-color:var(--amber);">
+        <div class="kpi-label disp">PTL Rate Keseluruhan</div><div class="kpi-val mono">6.94%</div>
+      </div>
+      <div class="kpi" style="border-top-color:var(--red);">
+        <div class="kpi-label disp">Total Value LDP</div><div class="kpi-val mono small">Rp121.245.810</div>
+      </div>
+      <div class="kpi" style="border-top-color:var(--teal);">
+        <div class="kpi-label disp">Qty Ditemukan (LDP Found)</div><div class="kpi-val mono">6.766</div>
+      </div>
+    </div>
+
+    <!-- PRODUKTIVITAS -->
+    <div>
+      <h2 class="sect disp">Produktivitas Troubleshooter</h2>
+      <div class="sect-sub">Perbandingan Done vs Pick To Loss (PTL) per orang — top 10</div>
+      <div class="bars" id="prodBars"></div>
+      <div class="tblwrap">
+        <table>
+          <thead><tr><th>Troubleshooter</th><th>Done</th><th>PTL</th><th>PTL Rate</th></tr></thead>
+          <tbody id="prodTable"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- PICK TO LOST OVERVIEW -->
+    <div>
+      <h2 class="sect disp">🎯 Pick To Lost Overview</h2>
+      <div class="sect-sub">Ringkasan bulanan PTL vs total Qty Sales Order</div>
+      <div class="kpis" style="margin-bottom:16px;">
+        <div class="kpi" style="border-top-color:var(--teal);">
+          <div class="kpi-label disp">Total Qty SO</div><div class="kpi-val mono small">18.345 jt</div>
+        </div>
+        <div class="kpi" style="border-top-color:var(--red);">
+          <div class="kpi-label disp">Pick To Lost (Qty)</div><div class="kpi-val mono">17.750</div>
+        </div>
+        <div class="kpi" style="border-top-color:var(--amber);">
+          <div class="kpi-label disp">Persentase PTL</div><div class="kpi-val mono">0.1%</div>
+        </div>
+      </div>
+      <div class="chart-title">Tren Harian PTL (Qty) — Juni 2026</div>
+      <svg viewBox="0 0 900 170" style="width:100%;height:180px;">
+        <line x1="20" y1="150" x2="890" y2="150" stroke="var(--line)" stroke-width="1"/>
+        <polyline id="ptlTrendLine" fill="none" stroke="var(--amber)" stroke-width="2"/>
+        <g id="ptlTrendDots"></g>
+        <g id="ptlTrendLabels"></g>
+      </svg>
+      <div style="margin-top:16px;" class="chart-title">History Top SKU Lost</div>
+      <div class="tblwrap">
+        <table>
+          <thead><tr><th style="text-align:center;">#</th><th>SKU</th><th>Item Desc</th><th>Lost Qty</th></tr></thead>
+          <tbody id="ptlSkuTable"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- AKURASI SLOC / STO -->
+    <div>
+      <h2 class="sect disp">✅ Akurasi Sloc &amp; Validasi STO</h2>
+      <div class="sect-sub">Berita acara hasil validasi mini STO WH STL harian</div>
+      <div class="grid2" id="stoCards"></div>
+    </div>
+
+    <!-- LDP LOSS -->
+    <div>
+      <h2 class="sect disp">📦 LDP — Barang Hilang (Loss)</h2>
+      <div class="sect-sub">583 SKU · 6.759 pcs · total kerugian Rp121.245.810</div>
+      <div class="tblwrap">
+        <table>
+          <thead><tr><th style="text-align:center;">#</th><th>Produk</th><th>Qty</th><th>Nilai Kerugian</th></tr></thead>
+          <tbody id="ldpTable"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- LDP FOUND -->
+    <div>
+      <h2 class="sect disp">🔍 LDP Found — Barang Ditemukan Kembali</h2>
+      <div class="sect-sub">682 record · 6.766 pcs ditemukan (data s.d. 16 Jun 2026)</div>
+      <div class="grid2">
+        <div>
+          <div class="chart-title">Tren Mingguan (Qty Ditemukan)</div>
+          <svg viewBox="0 0 340 170" style="width:100%;height:180px;">
+            <line x1="30" y1="150" x2="320" y2="150" stroke="var(--line)" stroke-width="1"/>
+            <polyline points="40,20 170,21 300,116" fill="none" stroke="var(--teal)" stroke-width="2.5"/>
+            <circle cx="40" cy="20" r="4" fill="var(--teal)"/>
+            <circle cx="170" cy="21" r="4" fill="var(--teal)"/>
+            <circle cx="300" cy="116" r="4" fill="var(--teal)"/>
+            <text x="40" y="165" fill="var(--muted)" font-size="9" text-anchor="middle">Week 23</text>
+            <text x="170" y="165" fill="var(--muted)" font-size="9" text-anchor="middle">Week 24</text>
+            <text x="300" y="165" fill="var(--muted)" font-size="9" text-anchor="middle">Week 25*</text>
+            <text x="40" y="14" fill="var(--text)" font-size="9" text-anchor="middle" font-family="monospace">2991</text>
+            <text x="170" y="15" fill="var(--text)" font-size="9" text-anchor="middle" font-family="monospace">2978</text>
+            <text x="300" y="110" fill="var(--text)" font-size="9" text-anchor="middle" font-family="monospace">797</text>
+          </svg>
+          <div style="font-size:11px;color:var(--muted);margin-top:4px;">*Week 25 baru 2 hari data (15–16 Jun)</div>
+        </div>
+        <div>
+          <div class="chart-title">Sumber Hilang (Source Lost)</div>
+          <div style="display:flex;align-items:center;gap:16px;">
+            <div style="width:120px;height:120px;border-radius:50%;flex-shrink:0;
+              background:conic-gradient(
+                var(--amber) 0% 66.86%,
+                var(--teal) 66.86% 81.23%,
+                var(--gold) 81.23% 87.94%,
+                var(--red) 87.94% 91.75%,
+                #7A8AA8 91.75% 94.98%,
+                #B084CC 94.98% 100%
+              );"></div>
+            <div class="donut-legend">
+              <div class="legend-item"><span class="legend-dot" style="background:var(--amber);"></span>Other (456)</div>
+              <div class="legend-item"><span class="legend-dot" style="background:var(--teal);"></span>Outbound Not Picked (98)</div>
+              <div class="legend-item"><span class="legend-dot" style="background:var(--gold);"></span>Replen Missed Process (39)</div>
+              <div class="legend-item"><span class="legend-dot" style="background:var(--red);"></span>SO Approval (26)</div>
+              <div class="legend-item"><span class="legend-dot" style="background:#7A8AA8;"></span>Replen Not Picked (22)</div>
+              <div class="legend-item"><span class="legend-dot" style="background:#B084CC;"></span>Lainnya (41)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tblwrap" style="margin-top:16px;">
+        <table>
+          <thead><tr><th>PIC</th><th>Jumlah Record</th><th>Qty Ditemukan</th></tr></thead>
+          <tbody id="foundTable"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- BTI -->
+    <div>
+      <h2 class="sect disp">↕️ Back To Inventory (BTI)</h2>
+      <div class="sect-sub">Ringkasan IN / OUT selama Juni 2026</div>
+      <div class="minis">
+        <div class="mini"><div class="mini-label">⬇ IN SKU</div><div class="mini-val">1.192</div></div>
+        <div class="mini"><div class="mini-label">⬇ IN QTY</div><div class="mini-val">5.091</div></div>
+        <div class="mini"><div class="mini-label">⬆ OUT SKU</div><div class="mini-val">625</div></div>
+        <div class="mini"><div class="mini-label">⬆ OUT QTY</div><div class="mini-val">1.801</div></div>
+      </div>
+      <div class="tblwrap">
+        <table>
+          <thead><tr><th>PIC</th><th>IN SKU</th><th>IN QTY</th><th>OUT SKU</th><th>OUT QTY</th></tr></thead>
+          <tbody id="btiTable"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="footer">Shee MF · Laporan dibuat otomatis dari data internal warehouse</div>
+  </div>
+</div>
+
+<script>
+const productivity = [
+  { name: "Muhammad Ray Farhan", done: 334, ptl: 12, rate: 3.5 },
+  { name: "Syahrulloh Arifiatno", done: 330, ptl: 29, rate: 8.1 },
+  { name: "Syaeful anwar", done: 316, ptl: 29, rate: 8.4 },
+  { name: "NURMANSYAH", done: 296, ptl: 23, rate: 7.2 },
+  { name: "Dede Andi Yuda", done: 285, ptl: 41, rate: 12.6 },
+  { name: "Sofyan Suhedi", done: 278, ptl: 18, rate: 6.1 },
+  { name: "Edri Aryanto", done: 277, ptl: 36, rate: 11.5 },
+  { name: "Muhamad Alfiansyah", done: 264, ptl: 20, rate: 7.0 },
+  { name: "M Risky Pirlyansyah", done: 259, ptl: 14, rate: 5.1 },
+  { name: "Angga", done: 235, ptl: 9, rate: 3.7 },
+  { name: "Hamid Fahmi", done: 235, ptl: 18, rate: 7.1 },
+  { name: "MUHAMAD RIZKI", done: 230, ptl: 17, rate: 6.9 },
+  { name: "Muhamad Rasyid", done: 220, ptl: 14, rate: 6.0 },
+  { name: "WIBISONO", done: 201, ptl: 9, rate: 4.3 },
+  { name: "MIFTAHUDIN", done: 189, ptl: 13, rate: 6.4 },
+  { name: "Tri Setianto", done: 170, ptl: 7, rate: 4.0 },
+  { name: "Muhamad Zidane Ardiyansyah", done: 92, ptl: 3, rate: 3.2 },
+  { name: "Rama Fauzi", done: 21, ptl: 0, rate: 0.0 },
+  { name: "Ferin Sofyan", done: 19, ptl: 1, rate: 5.0 },
+  { name: "Muhamad Aditya", done: 19, ptl: 4, rate: 17.4 },
+  { name: "MUHAMAD RIZKI DERAZAT", done: 8, ptl: 2, rate: 20.0 },
+  { name: "Muhamad Fahmi", done: 2, ptl: 0, rate: 0.0 },
+];
+const ldpTop10 = [
+  { p: "Kara Minyak Goreng Kelapa Pouch 2 Liter", qty: 120, val: 10530117 },
+  { p: "Frisian Flag Kental Manis Pouch 535 gram", qty: 480, val: 8880178 },
+  { p: "Sumo Merah Fortifikasi Khusus Beras Premium 5 kg", qty: 88, val: 7867860 },
+  { p: "Samyang Hot Chicken Ramen Buldak Carbonara 130 gr", qty: 277, val: 6232417 },
+  { p: "Karbol Wangi Classic Pine A Basics 4000 ml", qty: 120, val: 5536992 },
+  { p: "Celana Dalam Disposable Wanita Size L 6 pcs", qty: 252, val: 4761317 },
+  { p: "Cimory Chocolate Susu UHT 750 ml", qty: 228, val: 3192098 },
+  { p: "Gelas Kertas A Basics 8oz Isi 20 pcs 1 Pack", qty: 458, val: 3108765 },
+  { p: "Head & Shoulders Anti Dandruff Shampoo 160 ml", qty: 96, val: 3036073 },
+  { p: "Nuvo Family Hygienic Body Wash Refill 400 ml", qty: 180, val: 2699999 },
+];
+const foundByPic = [
+  { name: "Virgi firliandi", rec: 41, qty: 2322 },
+  { name: "MUHAMAD APRIJAL", rec: 201, qty: 2080 },
+  { name: "Ferin Sofyan", rec: 250, qty: 1171 },
+  { name: "Rangga janahta rizki", rec: 117, qty: 1019 },
+  { name: "Edri Aryanto", rec: 70, qty: 170 },
+  { name: "Feri setiawan", rec: 1, qty: 4 },
+];
+const btiTopPic = [
+  { name: "Muhamad Fahmi", inSku: 333, inQty: 1734, outSku: 112, outQty: 394 },
+  { name: "Fery Anggriawan", inSku: 323, inQty: 1279, outSku: 264, outQty: 770 },
+  { name: "Muhamad Zidane Ardiyansyah", inSku: 244, inQty: 612, outSku: 132, outQty: 375 },
+  { name: "R.Muhamad Ardabilly", inSku: 233, inQty: 1305, outSku: 65, outQty: 114 },
+];
+const ptlTrend = [
+  { d: "1", v: 805 }, { d: "2", v: 9 }, { d: "3", v: 68 }, { d: "4", v: 128 },
+  { d: "6", v: 29 }, { d: "7", v: 157 }, { d: "8", v: 136 }, { d: "9", v: 123 },
+  { d: "10", v: 173 }, { d: "12", v: 183 }, { d: "13", v: 9 }, { d: "14", v: 18 },
+  { d: "15", v: 121 }, { d: "16", v: 221 }, { d: "17", v: 33 }, { d: "18", v: 316 },
+  { d: "19", v: 36 }, { d: "20", v: 47 }, { d: "21", v: 11 }, { d: "23", v: 191 },
+  { d: "24", v: 46 }, { d: "25", v: 30 }, { d: "26", v: 18 }, { d: "27", v: 223 },
+  { d: "28", v: 126 }, { d: "29", v: 223 }, { d: "30", v: 108 },
+];
+const ptlTopSku = [
+  { sku: "8993319710796", name: "Crispy Brownies Mart...", lost: 304 },
+  { sku: "8993319710802", name: "Crispy Brownies Choc...", lost: 302 },
+  { sku: "8997204390353", name: "Popcorn Nebraska Co...", lost: 270 },
+  { sku: "8886007811113", name: "Teh Celup Cap Poci A...", lost: 162 },
+  { sku: "8993093864605", name: "Rose Brand Tepung T...", lost: 152 },
+  { sku: "8993296201119", name: "Bogasari Segitiga Bir...", lost: 141 },
+];
+const stoValidation = [
+  { date: "29 Jun 2026", skuCounted: 210, accQty: 99.93, dccAcc: 99.71, lostQty: 120, lostValue: 2199749, accSloc: 99.86, accPlanogram: 99.71, accSlocQty: 99.64, recount: "3 dari 210 SKU", recountImpact: 2425288 },
+  { date: "30 Jun 2026", skuCounted: 210, accQty: 99.65, dccAcc: 99.47, lostQty: 64, lostValue: 991931, accSloc: 100.0, accPlanogram: 99.68, accSlocQty: 99.34, recount: "1 dari 210 SKU", recountImpact: 518065 },
+];
+
+const rp = n => "Rp" + Math.round(n).toLocaleString("id-ID");
+const id = n => n.toLocaleString("id-ID");
+
+// PTL trend line chart
+(function(){
+  const w = 900, h = 170, padL = 20, padR = 20, top = 20, bottom = 150;
+  const maxV = Math.max(...ptlTrend.map(p=>p.v));
+  const stepX = (w - padL - padR) / (ptlTrend.length - 1);
+  const pts = ptlTrend.map((p,i) => {
+    const x = padL + i*stepX;
+    const y = bottom - (p.v/maxV)*(bottom-top);
+    return {x,y,...p};
+  });
+  document.getElementById("ptlTrendLine").setAttribute("points", pts.map(p=>`${p.x},${p.y}`).join(" "));
+  document.getElementById("ptlTrendDots").innerHTML = pts.map(p=>
+    `<circle cx="${p.x}" cy="${p.y}" r="2.5" fill="var(--amber)"/>`
+  ).join("");
+  document.getElementById("ptlTrendLabels").innerHTML = pts.map((p,i)=>
+    (i%2===0 ? `<text x="${p.x}" y="165" fill="var(--muted)" font-size="9" text-anchor="middle">${p.d}</text>` : "")
+  ).join("");
+})();
+
+document.getElementById("ptlSkuTable").innerHTML = ptlTopSku.map((r,i) => `
+  <tr>
+    <td class="mono" style="text-align:center;color:var(--muted);">${i+1}</td>
+    <td class="mono">${r.sku}</td>
+    <td>${r.name}</td>
+    <td class="num mono" style="color:var(--red);font-weight:700;">${r.lost}</td>
+  </tr>
+`).join("");
+
+document.getElementById("stoCards").innerHTML = stoValidation.map(d => `
+  <div style="background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;">
+    <div class="disp" style="font-size:13px;font-weight:700;color:var(--amber);margin-bottom:10px;">${d.date}</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;font-size:12.5px;">
+      <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">SKU Counted</span><span class="mono">${d.skuCounted}</span></div>
+      <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">% Acc by Qty</span><span class="mono" style="color:var(--teal);">${d.accQty}%</span></div>
+      <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">DCC Accuracy</span><span class="mono" style="color:var(--teal);">${d.dccAcc}%</span></div>
+      <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">% Acc Sloc</span><span class="mono" style="color:var(--teal);">${d.accSloc}%</span></div>
+      <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">% Acc Planogram</span><span class="mono" style="color:var(--teal);">${d.accPlanogram}%</span></div>
+      <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">% Sloc x Qty</span><span class="mono" style="color:var(--teal);">${d.accSlocQty}%</span></div>
+      <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">Lost Qty</span><span class="mono" style="color:var(--red);">${d.lostQty}</span></div>
+      <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">Lost Value</span><span class="mono" style="color:var(--red);">${rp(d.lostValue)}</span></div>
+    </div>
+    <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--line);font-size:12px;">
+      <div style="color:var(--muted);">Auto Recount: <span class="mono" style="color:var(--text);">${d.recount}</span></div>
+      <div style="color:var(--muted);margin-top:2px;">IDR Absolute Impact: <span class="mono" style="color:var(--amber);">${rp(d.recountImpact)}</span></div>
+    </div>
+  </div>
+`).join("");
+
+// bars (top 10)
+const maxDone = Math.max(...productivity.map(p=>p.done));
+const maxPtl = Math.max(...productivity.map(p=>p.ptl));
+document.getElementById("prodBars").innerHTML = productivity.slice(0,10).map(p => `
+  <div class="bar-row">
+    <div class="bar-name">${p.name}</div>
+    <div class="bar-track">
+      <div class="bar-fill" style="width:${(p.done/maxDone*55)}%;background:var(--teal);"></div>
+      <div class="bar-val" style="color:var(--teal);">${p.done}</div>
+    </div>
+    <div class="bar-track">
+      <div class="bar-fill" style="width:${(p.ptl/maxPtl*55)}%;background:var(--red);"></div>
+      <div class="bar-val" style="color:var(--red);">${p.ptl}</div>
+    </div>
+  </div>
+`).join("");
+
+document.getElementById("prodTable").innerHTML = productivity.map(p => `
+  <tr>
+    <td>${p.name==="Dede Andi Yuda" ? '<span class="crown">👑</span> ' : ''}${p.name}</td>
+    <td class="num mono" style="color:var(--teal);">${p.done}</td>
+    <td class="num mono" style="color:var(--red);">${p.ptl}</td>
+    <td class="num mono" style="color:var(--muted);">${p.rate}%</td>
+  </tr>
+`).join("");
+
+document.getElementById("ldpTable").innerHTML = ldpTop10.map((r,i) => `
+  <tr>
+    <td class="mono" style="text-align:center;color:var(--muted);">${i+1}</td>
+    <td>${r.p}</td>
+    <td class="num mono">${r.qty}</td>
+    <td class="num mono" style="color:var(--red);font-weight:700;">${rp(r.val)}</td>
+  </tr>
+`).join("");
+
+document.getElementById("foundTable").innerHTML = foundByPic.map(r => `
+  <tr>
+    <td>${r.name}</td>
+    <td class="num mono">${r.rec}</td>
+    <td class="num mono" style="color:var(--teal);font-weight:700;">${id(r.qty)}</td>
+  </tr>
+`).join("");
+
+document.getElementById("btiTable").innerHTML = btiTopPic.map(r => `
+  <tr>
+    <td>${r.name}</td>
+    <td class="num mono" style="color:var(--teal);">${r.inSku}</td>
+    <td class="num mono" style="color:var(--teal);">${r.inQty}</td>
+    <td class="num mono" style="color:var(--amber);">${r.outSku}</td>
+    <td class="num mono" style="color:var(--amber);">${r.outQty}</td>
+  </tr>
+`).join("");
+</script>
+</body>
+</html>
